@@ -1,0 +1,29 @@
+<p></p>
+<form class="card" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+
+    <mat-card-content>
+
+      <div class="form-group row">
+        <mat-form-field class="col-12">
+          <mat-label>Correo Electronico</mat-label>
+          <input matInput id="email" name="email" #email="ngModel" [(ngModel)]="model.email"
+                 placeholder="Correo Electronico" required minlength="4" type="email"/>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group row">
+        <mat-form-field class="col-12">
+          <mat-label>Contraseña</mat-label>
+          <input matInput id="password" name="password" #password="ngModel" [(ngModel)]="model.password"
+                 placeholder="Contraseña" required minlength="4" type="password"/>
+        </mat-form-field>
+      </div>
+
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-button color="primary" class="float-right" [disabled]="!f.form.valid">Iniciar Sesión</button>
+    </mat-card-footer>
+  </mat-card>
+</form>

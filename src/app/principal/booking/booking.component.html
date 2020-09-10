@@ -1,0 +1,47 @@
+<div class="example-container mat-elevation-z8 padding">
+  <div class="example-header">
+    <mat-form-field appearance="fill">
+      <mat-label>Filtro</mat-label>
+      <mat-select [(ngModel)]="filter" (selectionChange)="applyFilter(search)">
+        <mat-option *ngFor="let f of filters" [value]="f">
+          {{f.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> &nbsp;
+    <mat-form-field>
+      <input matInput [(ngModel)]="search" (keyup)="applyFilter(search)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="BookingId">
+      <mat-header-cell *matHeaderCellDef> BookingId. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bookingId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Cliente">
+      <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.tutenUserClient.firstName}} {{element.tutenUserClient.LastName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Creación">
+      <mat-header-cell *matHeaderCellDef> Creación </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bookingTime}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Dirección">
+      <mat-header-cell *matHeaderCellDef> Dirección </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.locationId.streetAddress}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Precio">
+      <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bookingPrice}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>
