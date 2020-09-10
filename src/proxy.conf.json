@@ -1,7 +1,0 @@
-{
-  "/api/*": {
-    "target": "https://dev.tuten.cl/TutenREST/#!",
-    "secure": false,
-    "logLevel": "debug"
-  }
-}
